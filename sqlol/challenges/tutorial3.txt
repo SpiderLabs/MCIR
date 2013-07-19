@@ -1,0 +1,17 @@
+SQLol Challenge 3 - Death Row
+============================
+This challenge is nearly identical to Challenge 1, but with one important difference: Only one row of data is returned at a time.
+
+We already learned how to use the UNION keyword to pull data from other locations. Next, we must learn how to pull a set of results, one row of data at a time. There are a few different ways to do this.
+
+MySQL
+--------
+The LIMIT and OFFSET keywords can be used to pull a specific number of records from a database beginning at a certain offset from the beginning of the initial result set. For instance, if we wanted to pull two user records starting at the third record in our initial result set, we might use the following query:
+
+SELECT * FROM users LIMIT 2 OFFSET 2
+
+We can use these keywords to pull one row and iterate through all results one by one. One drawback to the LIMIT and OFFSET keywords is that they must appear after GROUP BY and ORDER BY keywords, which are at the end of our initial query. As such, we comment out the end using a space and a hash ( #). The injection strings we would use for MySQL to pull the names and social security numbers from the ssn table would be like the following:
+
+' UNION SELECT concat(name,':',ssn) FROM ssn LIMIT 1 OFFSET 0 #
+' UNION SELECT concat(name,':',ssn) FROM ssn LIMIT 1 OFFSET 1 #
+...

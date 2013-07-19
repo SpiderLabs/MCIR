@@ -1,0 +1,29 @@
+SQLol Challenge 2 - The Failure of Quote Filters
+=============================
+Many people mistakenly believe that filtering out single quotes is sufficient to prevent SQL injection attacks. This challenge was created to prove that it is not. In this challenge, you are tasked with retrieving the social security numbers from the database as was done in Challenge 1.
+
+When injecting into a numeric field in a SQL query, you do not need to break out of single quotes as part of your injection. The original query looks like this:
+
+SELECT username FROM users WHERE isadmin = OUR_INPUT_HERE GROUP BY username ORDER BY username ASC
+
+We can perform the same injection attacks as shown in Challenge 1, except that we need to make special changes when we would normally use strings in our attack. Instead of using strings, we need to construct them using conversion and concatenation functions. This is database specific, and in this tutorial we will cover techniques specific to MySQL.
+
+We can create a string with a combination of the char() function which turns a decimal ascii value into the corresponding character and the concat() function which concatenates an arbitrary number of chars or strings into one string. If we take the word "Derp" and break it down into decimal ascii values, it can be represented as:
+
+68,101,114,112
+
+To turn each into a character, we use the char function, like so:
+
+char(68),char(101),char(114),char(112)
+
+And finally, we concatenate them to form a string:
+
+concat(char(68),char(101),char(114),char(112))
+
+If you do not want to manually perform this process, Burp Suite allows you to highlight text, right click, and select "convert selection>constructed string>MySQL". MSSQL and Oracle constructed strings are also supported.
+
+In this way, we can use literal strings in our SQL injection attacks without needing to use quotes at all. As such, we can repeat the process we performed in Challenge 1 and simply replace any strings we need to use in our injection string with the constructed version specific to our target database.
+
+Once we have found our SSN table, we can pull all the data using the following injection string:
+
+3 union select concat(name,char(59),ssn) as username from sqlol.ssn where 42=42

@@ -1,0 +1,44 @@
+XMLmao XMLi Challenge 0 - Hello, world!
+----------------------
+In this challenge, we have an XML injection scenario: Our data is being placed into the context of an XML document without sanitization. As such, we can affect the contents of the XML document to cause mischief. In this particular scenario, we are injecting a new "data" node into the document.
+
+The unaltered XML document looks like this:
+
+<xmlfile>
+ <hooray attrib="Inject2">
+  <ilovepie>Inject1</ilovepie>
+ </hooray>
+ <data>
+	<![CDATA[Inject3]]>
+ </data>
+</xmlfile>
+
+Our injection string is replacing the content of the data node where "Inject3" appears. The "CDATA" tag means that data inside is to be interpreted as literal. Inside that tag, no XML fiddling can occur. First, we break out of that tag with the character sequence "]]>". Unfortunately, this leaves us with a malformed XML document. XML parsers are generally strict, so we'll only get an error and unhappiness. We'll get to that later. For now, our injection string looks like this:
+
+foo]]>
+
+We're also inside an existing data node, so we need to break out of that. We can do that by injecting an end data tag, making our injection string as follows:
+
+foo]]></data>
+
+Now we're ready to open a new data tag:
+
+foo]]></data><data>
+
+The only thing left is to open up a new CDATA tag and value to return us to a well-formatted document:
+
+foo]]></data><data><![CDATA[bar
+
+And here's our document after modifications (with some nice formatting changes for easy reading):
+
+<xmlfile>
+ <hooray attrib="Inject2">
+  <ilovepie>Inject1</ilovepie>
+ </hooray>
+ <data>
+	<![CDATA[foo]]>
+ </data>
+ <data>
+    <![CDATA[bar]]>
+ </data>
+</xmlfile>

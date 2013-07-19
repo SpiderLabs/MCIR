@@ -1,0 +1,24 @@
+XMLmao XMLi Challenge 1 - There Can Be Only One
+----------------------
+In this challenge, we have two tasks: One, insert our own data tag. Two, prevent the original data tag from being parsed. Our original XML data looks like this:
+
+<xmlfile>
+ <hooray attrib="Inject2">
+  <ilovepie>Inject1</ilovepie>
+ </hooray>
+ <data>
+	<![CDATA[Inject3]]>
+ </data>
+</xmlfile>
+
+Our injection string will replace "Inject2". First, we need to break out of the attribute and "hooray" tag. So, our injection string starts with:
+
+"></hooray>
+
+Next, we must define our data tag with the data "winrar", which completes the first task and brings us to this injection string:
+
+"></hooray><data><![CDATA[winrar]]></data>
+
+Unfortunately, this leaves us with broken XML and two data tags. However, the XML parser, libxml, is written in native code. Additionally, the XML is being constructed as a string before being fed into the parser. As such, we can use a null byte to prematurely end the XML and prevent the original data tag from being read, completing the second task. We'll need to ensure that our other tags are properly closed, so we add a closing tag to end the "xmlfile" node. Our final injection string looks like this:
+
+"></hooray><data><![CDATA[winrar]]></data></xmlfile>%00

@@ -1,0 +1,50 @@
+<!--
+Magical Code Injection Rainbow - A set of configurable injection testbeds 
+Daniel "unicornFurnace" Crowley
+Copyright (C) 2012 Trustwave Holdings, Inc.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<xmlfile>
+<users>
+	<user>
+		<name first="Jeff" last="Smiley"/>
+		<id>1</id>
+		<username>jsmiley</username>
+		<password>jsmiley</password>
+		<phone>123-456-7890</phone>
+	</user>
+	<user>
+		<name first="Chunk" last="MacRunfast"/>
+		<id>2</id>
+		<username>cmacrunfast</username>
+		<password>speedsupto3</password>
+		<phone>603-478-4115</phone>
+	</user>
+	<user>
+		<name first="Mitch" last="Hedberg"/>
+		<id>3</id>
+		<username>mitch</username>
+		<password>@lltogether</password>
+		<phone>222-222-2222</phone>
+	</user>
+</users>
+<ssns>
+	<ssn>
+		<username>jsmiley</username>
+		<number>111-22-3333</number>
+	</ssn>
+	<ssn>
+		<username>cmacrunfast</username>
+		<number>123-45-6789</number>
+	</ssn>
+	<ssn>
+		<username>mitch</username>
+		<number>010-10-1010</number>
+	</ssn>
+</ssns>
+</xmlfile>

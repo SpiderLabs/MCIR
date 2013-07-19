@@ -1,0 +1,13 @@
+SQLol Challenge 8 - Black Comedy
+====================
+If you've been in information security long enough, you've heard that blacklisting is bad. In "Black Comedy", our task is to evade a particularly primitive blacklist filter.
+
+The filter removes the following keywords:
+union,select,where,and,or,--,#
+
+There is a fatal flaw in the way that the blacklist filter is implemented: It filters case sensitively. As such, we can use keywords like "union" and "select" by using altered case. For instance, we can use "uNion" and avoid filtering. We can't change the case of our comment delimiters (the "--" and "#") so we'll need to avoid using the comment technique. This is simple, we can just use two union statements as we have seen in previous challenges.
+
+Here's an example of an attack string that will work:
+
+' uNion seLect concat(name,':',ssn) from ssn uNion selEct null from users whEre username='
+

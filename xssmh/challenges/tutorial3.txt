@@ -1,0 +1,23 @@
+XSSmh - Challenge 3 - AttriBeautiful
+---------------
+In this challenge, you must cause Javascript to execute when injecting inside an existing HTML tag and without breaking out of the tag.
+
+This involves adding another attribute to the HTML tag which executes Javascript. This can be done using event handlers. Browsers support attributes which define Javascript to be executed when certain events occur, like a mouse click.
+
+One of the easiest to use is "onload" which executes Javascript as soon as a part of the DOM has been loaded. However, as we're injecting into an "input" tag, the "onload" attribute cannot be used. Instead, we can use "onmouseover", which executes Javascript when the mouse cursor moves over the element.
+
+Our original input tag looks as follows:
+<input type="text" value="OUR_INPUT_HERE">
+Our injection string can be:
+test" onmouseover="alert(1)" fakeattribute="
+Which results in the following input tag:
+<input type="text" value="test" onmouseover="alert(1)" fakeattribute="">
+
+Once a user mouses over the input box, an alert box is displayed.
+
+Additionally, we can use CSS to expand the input box to cover the entire window, making a mouseover event far more likely. We do this by adding a "style" attribute, which allows us to specify CSS attributes in-line. We specify absolute positioning, a position at the upper left corner of the window, and a width and height of 100%, ensuring 100% coverage of the window.
+
+Our injection string looks like this:
+test" onmouseover="alert(1)" style="position:absolute;top:0px;left:0px;width:100%;height:100%" fakeattribute="
+Resulting in the following input tag, one covers the entire window and which fires Javascript code when the mouse moves over the window:
+<input type="text" value="test" onmouseover="alert(1)" style="position:absolute;top:0px;left:0px;width:100%;height:100%" fakeattribute="">

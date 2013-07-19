@@ -1,0 +1,7 @@
+XSSmh - Challenge 0 - alert("Hello, world!");
+---------------
+This challenge tasks you with the most basic form of cross-site scripting attack possible.
+
+All you need to do is write a script directly into the injection point, like so:
+
+<script>alert("hello, world!")</script>

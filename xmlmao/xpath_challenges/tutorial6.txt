@@ -1,0 +1,17 @@
+Challenge 6 - Up, Up, and Away!
+=======================
+In file paths, there is a double-dot marker (..) which points to the parent directory. For example, the path /usr/sbin/sshd could also be represented as /etc/../usr/bin/../sbin/sshd or numerous other variations. Path traversal attacks frequently utilize this to traverse upwards in a file tree and access content from a wider context. This marker is also available within XPath. As such, we can take an XPath query which returns a very specific set of results and get it to return a far wider set using parent directory markers. Our original query looks like this:
+
+/xmlfile/users/user[username='jsmiley']/OUR_INPUT_HERE
+
+To begin with, we have a very specific context. We can choose any field within the set of child nodes for the user 'jsmiley'. UNLESS we use path traversal techniques! One important thing to note is that with normal path traversal attacks, we can make a valid path just by throwing a metric ton of "../" on there, extra markers are simply discarded. This is not the case with XPath, we need exactly the right number.
+
+As such, if we do not know the query to begin with we can simply brute force, trying one marker, then two, then three, each time ending with an asterisk to return all nodes:
+
+../*
+../../*
+../../../*
+
+Once we stop receiving results, we know we've gone too far and traversed past the root of the document. So, one correct answer is:
+
+../../../*

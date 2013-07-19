@@ -1,0 +1,53 @@
+XMLmao
+Daniel Crowley <dcrowley@trustwave.com>
+http://www.trustwave.com
+
+INTRODUCTION
+============
+
+***WARNING: XMLmao IS INTENTIONALLY VULNERABLE.
+DO NOT USE ON A PRODUCTION WEB SERVER. DO NOT
+EXPOSE XMLmao IN AN UNTRUSTED ENVIRONMENT.***
+
+XMLmao is a configurable XML/XPath injection testbed. XMLmao allows
+you to exploit XML/XPath injection flaws, but furthermore allows
+a large amount of control over the manifestation of the flaws.
+
+XMLmao is based on the idea of SQLol, an earlier release which
+allows for SQL injection exploitation.
+
+Greetz to the folks at n|u http://null.co.in for giving me the motivation
+to code this tool.
+
+
+REQUIREMENTS
+============
+
+PHP 5.x
+Web server
+
+USAGE
+=====
+
+Place the XMLmao source files on your Web server and
+open in a Web browser.
+
+COPYRIGHT
+=========
+
+XMLmao - A configurable XML/XPath injection testbed
+Daniel "unicornFurnace" Crowley
+Copyright (C) 2012 Trustwave Holdings, Inc.
+ 
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>

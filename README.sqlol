@@ -1,0 +1,85 @@
+SQLol
+Released at Austin Hackers Association meeting 0x3f
+Daniel Crowley <dcrowley@trustwave.com>
+http://www.trustwave.com
+
+INTRODUCTION
+============
+
+***WARNING: SQLol IS INTENTIONALLY VULNERABLE.
+DO NOT USE ON A PRODUCTION WEB SERVER. DO NOT
+EXPOSE SQLol IN AN UNTRUSTED ENVIRONMENT.***
+
+SQLol is a configurable SQL injection testbed. SQLol allows
+you to exploit SQL injection flaws, but furthermore allows
+a large amount of control over the manifestation of the flaw.
+To better understand why SQLol exists, please read the sonnet
+below:
+
+I humbly posit that the current state
+(With much respect to work which does precede)
+Of test-beds made with vulns to demonstrate
+Is lacking some in flexibility.
+Two options are presented present-day,
+As far as when one deals with S-Q-L:
+A blind injection (bool or time delay)
+And UNION statement hax (oh gee, how swell…)
+Imagine we could choose how queries read
+And how our input sanitizes, oh!
+How nimble and specific we could be
+To recreate our ‘sploit scenarios.
+And thus is S-Q-L-O-L conceived:
+That we can study how to pwn DBs.
+
+Options:
+Type of query
+Location within query
+Type and level of sanitization
+Level of query output
+Verbosity of error messages
+Visibility of query
+Injection string entry point
+
+Other cool things:
+Reset button
+Challenges
+Support for multiple database systems
+
+
+REQUIREMENTS
+============
+
+PHP 5.x
+Web server
+Database server (MySQL, PostgreSQL and SQLite have been tested, others may work)
+
+ADODB library (included)
+
+USAGE
+=====
+
+Place the SQLol source files on your Web server and
+open in a Web browser. Modify the configuration file
+#sqlol_directory#/includes/database.config.php to point
+to your installed database server. Use the resetbutton.php
+script to write the SQLol database, then start playing!
+
+COPYRIGHT
+=========
+
+SQLol - A configurable SQL injection testbed
+Daniel "unicornFurnace" Crowley
+Copyright (C) 2012 Trustwave Holdings, Inc.
+ 
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>

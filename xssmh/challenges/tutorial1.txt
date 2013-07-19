@@ -1,0 +1,11 @@
+XSSmh - Challenge 1 - The Failure of Quote Filters
+---------------
+In this challenge, you must write a script into the resulting HTML which does not use single or double quotes.
+
+There are several ways to achieve this, one of the simplest is using regular expressions and the "source" property.
+
+<script>alert(/hello/.source)</script>
+
+Another variation uses the "String.fromCharCode" method. This is slightly more complex, but has the advantage that you don't need your string to be a valid regular expression and is thus more flexible. This involves converting your string into a series of bytes in ASCII decimal representation. For instance, the decimal value of 'h' is 104. The same alert box could be built using the following syntax:
+
+<script>alert(String.fromCharCode(104,101,108,108,111))</script>

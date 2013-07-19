@@ -1,0 +1,33 @@
+XMLmao Challenge 1 - Retrieve ALL the Nodes!
+======================
+In SQL injection, the UNION keyword joins the output of SELECT queries into one result set. The equivalent in XPath is the pipe character. If X and Y are queries, we can say that X | Y returns the results of X along with the results of Y. If we want to return every node in an XML dataset, the query would be:
+
+/*
+
+Our injection needs to turn both the first and second halves of the query into complete and syntactically correct XPath queries which return no data, and join their results with a query for all nodes in the database. If the query looks like this:
+
+/xmlfile/users/user[username='OUR_INPUT']/username
+
+We must complete both the portion before our input:
+
+/xmlfile/users/user[username='
+
+We can do this with the string a'] which makes the first query in the set look this:
+
+/xmlfile/users/user[username='a']
+
+We also need to complete the portion after our input:
+
+']/username
+
+It's important to note that invalid node names don't result in query failure, they just return no results. So, we can use the prefix /a['a to turn the portion after our input into the following query:
+
+/a['a']/username
+
+Now all we need to do is join both queries with our all-nodes query using pipes, which looks like |/*| when you put it together. All in all, our resulting query will look like this:
+
+/xmlfile/users/user[username='a']|/*|/a['a']
+
+So, a correct answer to challenge 1 is:
+
+a']|/*|/a['a

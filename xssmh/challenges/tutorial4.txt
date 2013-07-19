@@ -1,0 +1,14 @@
+XSSmh - Challenge 4 - Black Comedy
+---------------
+In this challenge, you must cause Javascript to execute without using the word "script".
+
+This is deceptively easy. As we learned in the previous challenge, we can use event handler attributes to cause Javascript execution. When we control the whole tag, it is even easier.
+
+One way we can do this is with a "body" tag bearing an "onload" attribute:
+<body onload="alert(1)">
+
+You could also use an "img" tag with a bad "src" attribute and an "onerror" attribute which will fire as soon as the image loading fails:
+<img src="http://badurl.com/notthere.jpg" onerror="alert(1)">
+
+Additionally, other tags allow onerror and onload attributes, like the <svg> tag:
+<svg onload="alert(1)"></svg>

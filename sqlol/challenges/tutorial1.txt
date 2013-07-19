@@ -1,0 +1,59 @@
+SQLol Challenge 1 - SQL Injection 101
+===============================
+In this challenge, we must move beyond the objective of Challenge 0. We must return data from another table within the same database. This can  be performed by using the UNION keyword, which takes two or more SELECT queries and combines their result sets into one. First, let's analyze our initial query:
+
+SELECT username FROM users WHERE username = 'OUR_INPUT_HERE' GROUP BY username ORDER BY username ASC
+
+In order to use a union-style attack, we must first cut the query into two pieces; One piece precedes our input and the other follows it. The first obstacle to overcome is that we must provide input that changes each piece into a valid SELECT query and which joins the two using the UNION keyword. The first piece is as follows:
+
+SELECT username FROM users WHERE username = '
+
+This is not hard to complete, we need only to match the single quoted string that is open and we have a syntactically valid query. Thus, our input will begin with ' and the first select query in our final resulting query will be:
+
+SELECT username FROM users WHERE username = ''
+
+Next, we must provide a prefix to the second piece of our initial query, which is:
+
+' GROUP BY username ORDER BY username ASC
+
+We begin our second query by selecting the data we're interested in. How do we know where that is? We can query a pseudo-database called "information_schema" to get our information. First, we get the list of databases by querying for the "table_schema" column in the "tables" table of "information_schema", which is a SQL-92 standard meta-database for querying information about the data in the database. 
+
+SELECT table_schema FROM information_schema.tables
+
+But we still must account for the second piece of the initial query. At this point, we *could* simply comment out the rest of the query. How this would be done would depend on the backend database. We might be able to use a hash (#) or a double dash (--) or a null byte (%00) or the start marker for a multi-line comment (/*) depending on which backend database we're working with. However, we can also launch this attack without resorting to database-specific techniques and the rest of this tutorial will assume that we are attempting to use a database-independent solution.
+
+As we cannot have a GROUP BY or ORDER BY clause without a WHERE clause, we create a bogus one using an SQL tautology, making the end of our injection string look like this:
+
+SELECT table_schema FROM information_schema.tables WHERE 'a'='a
+
+Since we have a GROUP BY and ORDER BY clause which refers specifically to the "username" field, we must take that into account when creating our attack string. Otherwise, the query will refer to fields that don't exist. We can alias our fields in the second query to match the fields specified like so:
+
+SELECT table_schema AS username FROM information_schema.tables WHERE 'a'='a
+
+Now, all we need to do is to join the two queries using a UNION operator, making our first injection string as follows:
+
+' UNION SELECT table_schema AS username FROM information_schema.tables WHERE 'a'='a
+
+This will return the names of all the databases. Our goal is to pull the social security numbers from the database, so we pick the likely culprit, the "sqlol" database. Next, we modify our injection string slightly to pull back table names using the "table_name" column of "information_schema.tables" within the database we are interested in using the where clause to limit the results to tables within the sqlol database.
+
+' UNION SELECT table_name AS username FROM information_schema.tables WHERE table_schema='sqlol
+
+This returns two tables, "users" and "ssn". Guess which one has our social security numbers? ;) Next we will query for the column names within the table we want using the "information_schema.columns" table, again using the where clause to limit our search.
+
+' UNION SELECT column_name AS username FROM information_schema.columns WHERE table_name='ssn' AND table_schema='sqlol
+
+This returns us two columns: "name" and "ssn". We want to pull back both and be able to associate names with SSNs, but there's a catch: the UNION keyword requires that each SELECT query pulls back the same number of columns, each with compatible datatypes. If we did not know how many columns were in the original query, we could try various numbers of columns with NULLs (as they are compatible with every data type) in our second query until our query worked. Luckily for us, we can see the query and know that there is only one column.
+
+If we wanted, we could break our promise to find a database-independent method to be able to associate the names and SSNs from the database and simply concatenate two fields into one. An example with MySQL would be to use the concat() function:
+
+' UNION SELECT concat(name, ':', ssn) AS username FROM sqlol.ssn WHERE 'a'='a
+
+But we're more hardcore than that. \m/ What we can do is to first retrieve each name from the database like so:
+
+' UNION SELECT name AS username FROM sqlol.ssn WHERE 'a'='a
+
+Then we can use the WHERE clause to retrieve the social security numbers for each name:
+
+' UNION SELECT name AS username FROM sqlol.ssn WHERE name='Herp Derper
+
+And so, we have completed Challenge 1.

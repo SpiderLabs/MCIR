@@ -1,0 +1,37 @@
+SQLol Challenge 5 - Blind Luck
+==============================
+Blind SQL injection flaws can be exploited with a number of different techniques. There are currently three in-band data extraction styles: Boolean, Boolean error-based, and time-based.
+
+As blind SQL injection does not directly return any data, inference must be used to return data from the database one bit at a time. As with Challenge 3, "Death Row," we must reduce the data to component parts which we can return with specialized queries. In this challenge, you must retrieve the data from the ssn table using Boolean-style extraction. This means that we can tell if the query returned results of any sort, but we don't actually get access to the result. Our initial query looks like this:
+
+SELECT username FROM users WHERE username = 'OUR_INPUT_HERE' GROUP BY username ORDER BY username ASC
+
+First, we need an input which will reliably return results, or reliably not return results. We note that an empty input will reliably produce no results, as there is no user with a blank username. Next, we must add a second condition to the where clause which will evaluate as true based on the data in the database. Let's say we're working with a MySQL database. If we think the user is "root@localhost", we can verify this with the database using the inject string "' or user()='root@localhost", causing our SQL query to be:
+
+SELECT username FROM users WHERE username = '' or user()='root@localhost' GROUP BY username ORDER BY username ASC
+
+Instead of the user() function, we can use a subselect to pull a single value from the database. We can Booleanize any string data by splitting it into characters and using a binary tree style algorithm to determine each character's ascii value. In the case of numeric data, we can simply apply the binary tree algorithm to determine the number.
+
+MySQL
+-----
+The substring() function will allow us to cut a section from a string, in this case a single character. We can then use the ascii() function to get the ascii value of that character, which we can compare with various static values using the greater-or-equal (>=) operator. Our first injection string will look like this:
+
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 63 #
+
+This bisects the possible range of ascii values, 0 to 127. Should the query return results, we would bisect the upper range of ascii values as such:
+
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 95 #
+
+We continue to cut the range of possible values in half until we have discovered the value of the character. This results in seven queries to determine each character.
+
+Imagining that the first character of the first table name is "A" (which has an ascii value of 65 in decimal) the following queries will lead us to our value:
+
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 63 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 95 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 79 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 71 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 67 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 65 #
+' or ascii(substring((select table_name from information_schema.tables limit 1 offset 0),1,1)) >= 66 #
+
+The last two queries should return results and no results respectively. This informs us that the ascii value of the first character is "65", meaning that our first character is "A". This process can be continued until all desired data is learned.

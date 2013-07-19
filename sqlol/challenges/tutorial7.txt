@@ -1,0 +1,5 @@
+SQLol Challenge 7 - Walking on Thin Ice
+=================================
+Not every SQL injection flaw manifests in a SELECT query. When working with an INSERT, UPDATE, or DELETE query, one must be very careful: The wrong input can cause catastrophic damage to the contents of a database. If you use "' or 1=1--" as a string to detect SQL injection in an application and you find one in the WHERE clause of a DELETE query, you might as well have just dropped the table.
+
+This is our task here:

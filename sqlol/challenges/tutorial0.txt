@@ -1,0 +1,22 @@
+SQLol Challenge 0 - Hello, world!
+====================
+(Note: These tutorials assume a basic knowledge of SQL. If you are unfamiliar with SQL, please visit http://www.w3schools.com/sql/default.asp)
+One of the most basic forms of SQL Injection modifies a query to return all results by effectively removing a WHERE clause. If a SQL query has a WHERE clause with two conditions separated by an OR keyword where one is a tautology (a statement that is always true such as 'a'='a') the first condition is essentially useless, as the second condition always evaluates to true, meaning that the WHERE clause might as well not be there.
+
+Our SQL query looks like this initially:
+SELECT username FROM users WHERE username = 'OUR_INPUT_HERE' GROUP BY username ORDER BY username ASC
+
+If the query looked like the following, we would retrieve all usernames from the database, not just the one named "myuser":
+SELECT username FROM users WHERE username = 'myuser' or 'a'='a' GROUP BY username ORDER BY username ASC
+
+If we place a single quote into our injection string as such:
+myuser'
+
+Our SQL query looks like this and is syntactically incorrect due to unmatched single quotes, resulting in an error:
+SELECT username FROM users WHERE username = 'myuser'' GROUP BY username ORDER BY username ASC
+
+Our input is not sanitized before being placed in an SQL query, and so we can modify the query as we like. In order to turn our initial query into the one which returns all users, we can use the following string:
+
+myuser' or 'a'='a
+
+When you perform this attack, note the resulting query shown. Your injection portion is underlined to highlight how your input modified the query without losing sight of the form the query was initially intended to take.

@@ -1,0 +1,8 @@
+XMLmao Challenge 0 - Hello, world!
+----------------------
+The original query you're working with is /xmlfile/users/user[username='YOUR_INPUT_GOES_HERE']/username.
+The part in square brackets, the condition, specifies that only user nodes whose username is equal to your input. However, like the WHERE clause in a SQL statement, it is possible to nullify the condition with an "or" keyword and a tautology like "'a'='a'" such that all results are returned regardless of condition. Such a condition would look like this: [username='user' or 'a'='a'].
+
+To cause the condition of the query to be nullified and all the usernames returned, your input should be:
+
+user' or 'a'='a

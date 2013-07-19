@@ -1,0 +1,15 @@
+XSSmh - Challenge 5 - Detour
+---------------
+This challenge deviates from the previous ones in that the difficulty is not in gaining Javascript execution, but in utilizing it effectively. Javascript has the ability to modify the existing DOM, and one effective attack is to redirect a form submission to somewhere else. This is what you are tasked with doing in this challenge.
+
+In order to understand how this is done, we must understand how to reference DOM objects from Javascript. Let's abstract it a little and pretend we're referencing the city of Boston in the United States. We could do so like this:
+
+earth.northAmerica.unitedStates.massachusetts.boston
+
+We start by referencing the most wide item, and slowly work our way down the hierarchy to specify the element we want. If we want to reference the "action" attribute of the 2nd form in our document, we do so with the following path:
+
+document.forms[1].action
+
+We can then set this to an arbitrary location through simple assignment. So, our attack string would look like this:
+
+<script>document.forms[1].action="foo.php"</script>

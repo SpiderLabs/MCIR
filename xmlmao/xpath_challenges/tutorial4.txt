@@ -1,0 +1,18 @@
+Challenge 4 - Love is Blind
+==========================
+In this challenge, we have no output from the query, only an indication of whether or not the query returned results. In the previous challenge, we could retrieve one value at a time but had to use blind techniques to understand the structure of the data. We start by enumerating the structure in the same way as in the previous challenge. Instead of retrieving the value of each as in the previous example, we must now use blind techniques to extract the data.
+
+A technique we can use to do so involves the substring() function. The following query will return results only if the first character in the first child node of the root is equal to 'a':
+
+/*[substring(/*[1],1,1)='a']
+
+We can use our query to achieve the same by manipulating the condition to hinge on the evaluation of the substring. We can do this using a known username value or with the use of the 'or' keyword.
+
+With: /xmlfile/users/user[username='jsmiley' and substring(/*[1],1,1)='a']/username
+Without: /xmlfile/users/user[username='' or 1=1 and substring(/*[1],1,1)='a']/username
+
+The "without" version is more useful as we don't need to know an existing value.
+
+By iterating through a character set of likely characters for each character in the value to be retrieved, we can slowly determine the value.
+
+This process can be automated using the tools "BXPI" and "XPath Blind Explorer". As of this writing, XPath Blind Explorer URL-encodes the ampersand character in GET or POST data and as such cannot properly handle pages which require multiple parameters to be set, such as XMLmao. This can be overcome by using Burp Proxy to convert any "%26" back to "&".

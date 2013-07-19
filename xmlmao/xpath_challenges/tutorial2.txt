@@ -1,0 +1,19 @@
+XMLmao Challenge 2 - The Failure of Quote Filters
+=================================
+In this challenge, we see how filtering single quotes is not entirely effective. In SQL Injection, this presents an interesting obstacle, but not a significant one. In XPath injection, it presents much less difficulty.
+
+In "Challenge 1 - Retrieve ALL the Nodes!" we used a technique to retrieve all nodes from the document when injection occurs in a condition within the XPath query. If you're unfamiliar with that technique, you'll understand this tutorial better if you play through Challenge 1 first.
+
+In this challenge, we make a very slight modification: We don't use single quotes. That's about it!
+
+The query looks something like this:
+
+/xmlfile/users/user[id=OUR_INPUT_HERE]/username
+
+What we need to do is to make this one query into three queries; One will return the entire set of nodes in the XML dataset, the other two will return nothing. Our injection string will cause the query to look like this after injection:
+
+/xmlfile/users/user[id=3]|/node()|/a[1]
+
+One correct answer, then, is:
+
+3]|/*|/a[1

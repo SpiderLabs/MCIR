@@ -1,0 +1,11 @@
+XSSmh - Challenge 2 - Basic Persistent Threat
+---------------
+This challenge tasks you with the most basic form of cross-site scripting attack possible.
+
+All you need to do is write a script directly into the injection point, like so:
+
+<script>alert("hello, world!")</script>
+
+This challenge is in XSSmh not to allow you to launch some complicated attack, it is simply to demonstrate the limitations of XSS protections which aren't based in good programming practices.
+
+To my knowledge, there is no WAF, browser or browser add-on which will prevent Javascript execution in a persistent scenario. (Please correct me if I am mistaken.)

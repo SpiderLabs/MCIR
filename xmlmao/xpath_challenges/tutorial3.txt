@@ -1,0 +1,29 @@
+XMLmao Challenge 3 - Looking Through a Keyhole
+================================
+In previous challenges, we were able to retrieve all the XML data in one pass by joining the results of the query /* with two queries designed to returned nothing which we created from the remainder of the original query.
+
+In this challenge, we must make multiple queries to retrieve all the data, as we can only retrieve a value at a time. As such, we iterate through the entire dataset, one node at a time.
+
+First, we must iterate through the dataset and determine its structure. This is made easier because we can make XPath queries inside conditions. We can iterate through each of the child nodes and refer to each of them as such:
+
+/*[1]
+/*[2]
+etc…
+
+This can also be used hierarchically, like so:
+
+/*[1]/*
+
+In order to determine how many child nodes there are, we can use the count() function. First, we need a valid username. This can be acheived with the same technique as used in Challenge 0. We find that "jsmiley" is a valid user. We can change the condition to require that the username be "jsmiley" and that some statement based on the count of nodes is true. An example attack string is as follows:
+
+jsmiley' and count(/*)<10 and '1'='1
+
+This results in a query that looks like the following:
+
+/xmlfile/users/user[username='jsmiley' and count(/*)<10 and '1'='1']/username
+
+If the number of nodes which are children of the root are less than 10, we see the "jsmiley" username returned. In this way, we can slowly learn the hierarchy of the dataset, query by query. Once we know the hierarchy, we can begin to use a technique similar to Challenge 1 to pull back the value of each node in the entire hierarchy like so:
+
+']|/*[1]/*[1]/*[1]/*[3]|/a['a
+
+By determining the hierarchy and pulling back each node, we can reconstruct the entire document, one value at a time. Since functions like count() can only be used inside conditions, the process of determining the hierarchy of the dataset is blind, but the data extraction is not.

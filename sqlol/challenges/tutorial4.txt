@@ -1,0 +1,21 @@
+SQLol Challenge 4 - War on Error
+================================
+In this challenge, we do not see any of the result set. What we DO see is verbose error messages. While some would mistakenly assume that this is a blind SQL injection challenge, data extraction can be achieved without the use of blind SQL injection techniques. Certain error messages will disclose information pulled from the database.
+
+MySQL
+-----
+The "ExtractValue" function in MySQL runs an XPath query against a string representing XML data. The function takes input in the following form:
+
+ExtractValue('xmldatahere', 'xpathqueryhere')
+
+If the XPath query is syntactically incorrect, we are presented with an error message:
+
+XPATH syntax error: 'xpathqueryhere'
+
+Provided that they return a single string value, we can replace strings with select queries surrounded by parentheses, hereafter referred to as "subselects". We can call ExtractValue() in our injection string, and replace the xpath query parameter with a subselect. If the data returned is not a valid xpath query, the data will be revealed in the error message we receive. We can force this to be the case using the concat() function to preface the xpath query with an invalid character, which will cause syntax errors.
+
+We can pull each row from the ssn table using these injection strings:
+
+' AND ExtractValue('junk',concat(0x01,(select concat(name,':',ssn) from ssn limit 1 offset 0)))='a
+' AND ExtractValue('junk',concat(0x01,(select concat(name,':',ssn) from ssn limit 1 offset 1)))='a
+...

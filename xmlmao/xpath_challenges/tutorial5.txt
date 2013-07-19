@@ -1,0 +1,31 @@
+Challenge 5 - Pipe Dream
+=====================
+In this challenge, we must retrieve passwords for all the users in our database without using the pipe character. Our initial query looks like this:
+
+/xmlfile/users/user[username='OUR_INPUT_HERE']/username
+
+It has been said that it is not possible to comment out the end of XPath queries as is done with SQL injection attacks. While this is true, we do have an option for truncating an XPath query prematurely: The Poison Null Byte.
+
+C-based languages use the null byte as a string terminator and will stop reading any string given to it when reaching a null byte. Since libxml is written in a C-based language, the XPath query given to it by our PHP script (which actually reads the whole string) will be truncated if a null byte is present. The URL-encoded version of a null byte is "%00".
+
+As we control the portion of the query which comes before the field in the user object is selected, we can truncate the portion of the query which specifies that only the username is to be returned. We can do this by closing the condition and truncating the rest with a null byte. The final query will look like this to PHP:
+
+/xmlfile/users/user[username='']%00']/username
+
+And libxml will read it as:
+
+/xmlfile/users/user[username='']
+
+Our only problem is that this only returns the password for any user with a blank username, which is unlikely to return any data. As such, we can use our condition nullifying trick from Challenge 0 in tandem with the null byte to pull all data for all users, which includes password data. The final query looks like this:
+
+/xmlfile/users/user[username='' or '1'='1']%00']/username
+
+Which is read by libxml as the following:
+
+/xmlfile/users/user[username='' or '1'='1']
+
+This returns us the entire set of user data, without using the pipe character.
+
+So, one correct answer to Challenge 5 is:
+
+' or '1'='1']%00
