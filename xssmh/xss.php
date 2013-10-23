@@ -49,6 +49,7 @@ if(isset($_REQUEST['submit'])){
 	
 	if (isset($_REQUEST['custom_inject']) and $_REQUEST['custom_inject']!=''){
 		$output = str_replace('*INJECT*', $_REQUEST['inject_string'], $_REQUEST['custom_inject']);
+		$display_output = str_replace('*INJECT*', 'UNDERLINEME'.$_REQUEST['inject_string'].'UNDERLINEMEEND', $_REQUEST['custom_inject']);
 	}else{
 		switch ($_REQUEST['location']){
 			case 'body':

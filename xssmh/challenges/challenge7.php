@@ -13,11 +13,11 @@ You should have received a copy of the GNU General Public License along with thi
 ?>
 <html>
 <head>
-	<title>XSSmh - Challenge 6 - Up the Chain</title>
+	<title>XSSmh - Challenge 7 - Crouching JS, Hidden Field</title>
 <link rel="stylesheet" type="text/css" href="../../includes/mcir.css">
 </head>
 <body>
-	<center><h1>XSSmh - Challenge 6 - Up the Chain</h1></center><br>
+	<center><h1>XSSmh - Challenge 7 - Crouching JS, Hidden Field</h1></center><br>
 
 	<hr width="40%">
 	<hr width="60%">
