@@ -1,0 +1,31 @@
+html,body{
+	margin: 0;
+}
+
+#settings{
+	text-align: center;
+	background: #E1E100;
+	width: 100%;
+	height: 25px;
+}
+
+#footer{
+	position: absolute;
+	bottom: 0;
+	background: #000000;
+	height: 50px;
+	width: 100%;
+	color: #FFF;
+	text-align: center;
+}
+
+#content{
+	margin-left: 150px;
+	margin-top: -75px;
+	margin-right: 50px;
+	min-height: 500px;
+}
+
+#nav{
+	margin-top: 50px;
+}
