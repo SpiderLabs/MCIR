@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License along with thi
 */
 ?>
 <center>
-| <a href="chosenpt.php">Chosen Plaintext Attack</a> || <a href="chosenct.php">Chosen Ciphertext Attack</a> || <a href="challenges.htm">Challenges</a> || <a href="ctf.php">CTF-Style Challenges</a> |<br>
+| <a href="chosenpt.php">Chosen Plaintext Attack</a> || <a href="chosenct.php">Chosen Ciphertext Attack</a> || <a href="random.php">Pseudo-Random Number Generator</a> || <a href="challenges.htm">Challenges</a> || <a href="ctf.php">CTF-Style Challenges</a> |<br>
 </center>
 
 <hr width="40%">
