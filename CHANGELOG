@@ -4,3 +4,6 @@ Initial version
 v1.1
 Added CryptOMG
 Added CPA and CCA tools to CryptOMG
+
+v1.2
+Added PRNG tool to CryptOMG
