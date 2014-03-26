@@ -11,7 +11,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<center>| <a href="xpath.php">XPath Injection</a> || <a href="xmlinjection.php">XML Injection</a> || <a href="challenges.htm">Challenges</a> | </center>
+<center>| <a href="xpath.php">XPath Injection</a> || <a href="xmlinjection.php">XML Injection</a> || <a href="xslt.php">XSL Injection</a> || <a href="challenges.htm">Challenges</a> | </center>
 <hr width="40%">
 <hr width="60%">
 <hr width="40%">

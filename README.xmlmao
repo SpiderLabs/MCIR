@@ -9,7 +9,7 @@ INTRODUCTION
 DO NOT USE ON A PRODUCTION WEB SERVER. DO NOT
 EXPOSE XMLmao IN AN UNTRUSTED ENVIRONMENT.***
 
-XMLmao is a configurable XML/XPath injection testbed. XMLmao allows
+XMLmao is a configurable XML/XPath/XSL injection testbed. XMLmao allows
 you to exploit XML/XPath injection flaws, but furthermore allows
 a large amount of control over the manifestation of the flaws.
 
@@ -24,6 +24,7 @@ REQUIREMENTS
 ============
 
 PHP 5.x
+XSLT php module (libxslt)
 Web server
 
 USAGE

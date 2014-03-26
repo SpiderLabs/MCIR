@@ -7,3 +7,6 @@ Added CPA and CCA tools to CryptOMG
 
 v1.2
 Added PRNG tool to CryptOMG
+
+v1.2.1
+Added XSL injection testbed to XMLmao
