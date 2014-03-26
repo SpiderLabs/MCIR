@@ -1,4 +1,6 @@
 <?php
+//If you're installing the magical code injection rainbow, MySQL will be set up by default. Enter the username and password for the user you configured during MySQL setup below in the MySQL section.
+
 /*
 Magical Code Injection Rainbow - A set of configurable injection testbeds 
 Daniel "unicornFurnace" Crowley
