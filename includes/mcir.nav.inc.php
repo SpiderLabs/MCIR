@@ -12,4 +12,4 @@ You should have received a copy of the GNU General Public License along with thi
 */
 ?>
 
-<center id="mcirnav">|<a href="../sqlol/">SQLol</a>||<a href="../xmlmao/">XMLmao</a>||<a href="../shellol/">ShelLOL</a>||<a href="../xssmh/">XSSmh</a>||<a href="../cryptomg">CryptOMG</a>|<a href="../rfidk">RFIdk</a>|</center>
+<center id="mcirnav">|<a href="../sqlol/">SQLol</a>||<a href="../xmlmao/">XMLmao</a>||<a href="../shellol/">ShelLOL</a>||<a href="../xssmh/">XSSmh</a>||<a href="../cryptomg">CryptOMG</a>||<a href="../rfidk">RFIdk</a>||<a href="../phpwn">PHPwn</a>|</center>

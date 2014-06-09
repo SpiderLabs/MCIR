@@ -26,9 +26,10 @@ $mcir['page_name'] = 'File Inclusion'; //Description of this page
 include('includes/nav.inc.php');
 include('../includes/options.inc.php');
 ?>
-	<tr><td>File Inclusion Options:</td><td>
+	<tr><td><b>File Inclusion Options:</b></td><td>
+		<tr><td><small><i>File inclusion specific options</i></small></td></tr>
 		<tr><td>Display file only:</td><td><input type="checkbox" name="no_parse" <?php if(isset($_REQUEST["no_parse"])) echo "checked"; ?> ></td></tr>
-
+		<tr></tr>
 	<tr><td>Injection Location:</td><td>
 		<select name="location">
 			<option value="filename">Full filename</option>
