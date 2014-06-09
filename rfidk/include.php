@@ -65,8 +65,8 @@ if(isset($_REQUEST['submit'])){
 				$display_uri = str_replace('news', '<u>' . $_REQUEST['inject_string'] . '</u>', 'pages/date.php');
 				break;
 			case 'domain':
-				$uri = str_replace('example.com', $_REQUEST['inject_string'], 'http://example.com/');
-				$display_uri = str_replace('example.com', '<u>' . $_REQUEST['inject_string'] . '</u>', 'http://example.com');
+				$uri = str_replace('example.com', $_REQUEST['inject_string'], 'http://example.com/date.php');
+				$display_uri = str_replace('example.com', '<u>' . $_REQUEST['inject_string'] . '</u>', 'http://example.com/date.php');
 				break;
 		}
 	}
