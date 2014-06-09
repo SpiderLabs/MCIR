@@ -2,7 +2,7 @@
 /*
 Magical Code Injection Rainbow - A set of configurable injection testbeds 
 Daniel "unicornFurnace" Crowley
-Copyright (C) 2012 Trustwave Holdings, Inc.
+Copyright (C) 2014 Trustwave Holdings, Inc.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -12,4 +12,4 @@ You should have received a copy of the GNU General Public License along with thi
 */
 ?>
 
-<center id="mcirnav">|<a href="../sqlol/">SQLol</a>||<a href="../xmlmao/">XMLmao</a>||<a href="../shellol/">ShelLOL</a>||<a href="../xssmh/">XSSmh</a>||<a href="../cryptomg">CryptOMG</a>|</center>
+<center id="mcirnav">|<a href="../sqlol/">SQLol</a>||<a href="../xmlmao/">XMLmao</a>||<a href="../shellol/">ShelLOL</a>||<a href="../xssmh/">XSSmh</a>||<a href="../cryptomg">CryptOMG</a>|<a href="../rfidk">RFIdk</a>|</center>

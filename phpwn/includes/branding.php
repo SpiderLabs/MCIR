@@ -1,0 +1,6 @@
+<?php
+
+
+$mcir['name'] = 'PHPwn';
+
+?>

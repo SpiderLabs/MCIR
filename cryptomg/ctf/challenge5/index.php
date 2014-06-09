@@ -3,7 +3,7 @@
 CryptOMG - A configurable CTF style test bed.
 CryptOMG by Andrew Jordan
 This challenge contributed by Daniel Crowley
-Copyright (C) 2012 Trustwave Holdings, Inc.
+Copyright (C) 2014 Trustwave Holdings, Inc.
 
 This program is free software: you can redistribute it and/or modify it 
 under the terms of the GNU General Public License as published by the 
