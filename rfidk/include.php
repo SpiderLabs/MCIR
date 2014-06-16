@@ -37,7 +37,7 @@ include('../includes/options.inc.php');
 			<option value="domain" <?php if(isset($_REQUEST["location"]) and $_REQUEST["location"]=="domain") echo "selected"; ?>>Domain name</option>
 
 		</select></td></tr>
-		<tr><td>Custom command (*INJECT* specifies injection point):</td><td><textarea name="custom_inject"><?php echo (isset($_REQUEST['custom_inject']) ? htmlentities($_REQUEST['custom_inject']) : '' ); ?></textarea></td></tr>
+		<tr><td>Custom include path (*INJECT* specifies injection point):</td><td><textarea name="custom_inject"><?php echo (isset($_REQUEST['custom_inject']) ? htmlentities($_REQUEST['custom_inject']) : '' ); ?></textarea></td></tr>
 	</table>
 	<input type="submit" id="submit" name="submit" value="Inject!">
 </form>
