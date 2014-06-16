@@ -61,8 +61,8 @@ if(isset($_REQUEST['submit'])){
 				$display_uri = str_replace('date.php', '<u>' . $_REQUEST['inject_string'] . '</u>', 'pages/date.php');
 				break;
 			case 'basename':
-				$uri = str_replace('news', $_REQUEST['inject_string'], 'pages/date.php');
-				$display_uri = str_replace('news', '<u>' . $_REQUEST['inject_string'] . '</u>', 'pages/date.php');
+				$uri = str_replace('date', $_REQUEST['inject_string'], 'pages/date.php');
+				$display_uri = str_replace('date', '<u>' . $_REQUEST['inject_string'] . '</u>', 'pages/date.php');
 				break;
 			case 'domain':
 				$uri = str_replace('example.com', $_REQUEST['inject_string'], 'http://example.com/date.php');
