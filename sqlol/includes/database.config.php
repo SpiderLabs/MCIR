@@ -20,7 +20,7 @@ $dbtype = 'mysql';
 $server = 'localhost';
 $port = '3306';
 $username = 'root';
-$password = '';
+$password = 'default_mcir_db_password';
 $database = 'sqlol';
 $persist = '';
 

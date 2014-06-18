@@ -19,8 +19,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 $db_host = "localhost";
-$db_user = "";
-$db_pass = "";
+$db_user = "root";
+$db_pass = "default_mcir_db_password";
 $db_name = "cryptomg";
 
 $link = mysql_connect($db_host, $db_user, $db_pass);
