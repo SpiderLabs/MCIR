@@ -10,7 +10,17 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-
-header('Location: splash/index.php');
-
 ?>
+<html>
+<head>
+<title>The Magical Code Injection Rainbow!</title>
+<link rel="stylesheet" type="text/css" href="includes/mcir.css">
+</head>
+<body>
+<center><h1>Magical Code Injection Rainbow</h1></center><br>
+<div id="results">
+Welcome to the Magical Code Injection Rainbow!<br>
+</div>
+<?php include('includes/mcir.nav.inc.php'); ?>
+</body>
+</html>
