@@ -21,6 +21,6 @@ You should have received a copy of the GNU General Public License along with thi
 <div id="results">
 Welcome to the Magical Code Injection Rainbow!<br>
 </div>
-<center id="mcirnav">|<a href="sqlol/">SQLol</a>||<a href="xmlmao/">XMLmao</a>||<a href="shellol/">ShelLOL</a>||<a href="xssmh/">XSSmh</a>||<a href="cryptomg">CryptOMG</a>|</center>
+<?php include('includes/mcir.nav.inc.php'); ?>
 </body>
 </html>
