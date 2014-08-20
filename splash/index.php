@@ -14,13 +14,13 @@ You should have received a copy of the GNU General Public License along with thi
 <html>
 <head>
 <title>The Magical Code Injection Rainbow!</title>
-<link rel="stylesheet" type="text/css" href="includes/mcir.css">
+<link rel="stylesheet" type="text/css" href="../includes/mcir.css">
 </head>
 <body>
 <center><h1>Magical Code Injection Rainbow</h1></center><br>
 <div id="results">
 Welcome to the Magical Code Injection Rainbow!<br>
 </div>
-<?php include('includes/mcir.nav.inc.php'); ?>
+<?php include('../includes/mcir.nav.inc.php'); ?>
 </body>
 </html>
