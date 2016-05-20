@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with thi
 //Choose the appropriate type of database here
 
 //Choose me for MySQL
-$dbtype = 'mysql';
+$dbtype = 'mysqli';
 $server = 'localhost';
 $port = '3306';
 $username = 'root';
