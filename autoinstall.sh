@@ -1,5 +1,5 @@
 #!/bin/bash
-apt-get install apache2 libapache2-mod-php5 php5-xsl php5-mcrypt mysql-server php5-mysql
+apt-get install apache2 libapache2-mod-php5 php5-xsl php5-mcrypt mysql-server php5-mysqlnd
 echo -n "Please enter your database username: ";read username
 echo -n "Please enter your database password: ";read password
 mv sqlol/includes/database.config.php sqlol/includes/database.config.php.orig
