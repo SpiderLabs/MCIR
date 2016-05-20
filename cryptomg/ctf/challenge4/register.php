@@ -25,13 +25,13 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
 	$email = htmlentities($_POST['email']);
 	
 	$sql_check_user = "SELECT * FROM challenge4_users WHERE username='$username'";
-	$query_check_user = mysql_query($sql_check_user) or die(mysql_error());
-	if(mysql_num_rows($query_check_user) > 0)
+	$query_check_user = mysqli_query($sql_check_user) or die(mysqli_error());
+	if(mysqli_num_rows($query_check_user) > 0)
 		$message = "Username already exisits";
 	else{
 		$sql_insert_user = "INSERT INTO challenge4_users (username, password, email)
 									VALUES('$username', '$password', '$email')";
-		$query_insert_user = mysql_query($sql_insert_user) or die(mysql_error());
+		$query_insert_user = mysqli_query($sql_insert_user) or die(mysqli_error());
 		if($query_insert_user)
 			$message = "Registration successful, you may now <a href=\"./index.php\">login</a>.";
 	}
