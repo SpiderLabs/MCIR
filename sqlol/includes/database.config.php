@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 //Choose me for MySQL
 $dbtype = 'mysqli';
-$server = 'localhost';
+$server = '127.0.0.1';
 $port = '3306';
 $username = 'root';
 $password = 'default_mcir_db_password';
@@ -29,7 +29,7 @@ $hostspec = $username.':'.$password.'@'.$server.':'.$port;
 
 /*//Choose me for PostgreSQL
 $dbtype = 'postgres';
-$server = 'localhost';
+$server = '127.0.0.1';
 $port = '5432';
 $username = 'postgres';
 $password = 'postgres';
