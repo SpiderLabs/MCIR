@@ -7,4 +7,6 @@ mv cryptomg/includes/db.inc.php cryptomg/includes/db.inc.php.orig
 sed "s/root/$username/" sqlol/includes/database.config.php.orig | sed "s/default_mcir_db_password/$password/" > sqlol/includes/database.config.php
 sed "s/root/$username/" cryptomg/includes/db.inc.php.orig | sed "s/default_mcir_db_password/$password/" > cryptomg/includes/db.inc.php
 chmod 666 xssmh/pxss.html
+echo "Initializing SQLol database..."
+php sqlol/resetbutton.php
 echo "MCIR should be set up now. Enjoy!"
