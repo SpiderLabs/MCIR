@@ -1,5 +1,5 @@
 mysqldb:
-  image: mysql
+  image: mysql:5.7.24
   environment:
     - MYSQL_ROOT_PASSWORD=mcirpass00112233
     - MYSQL_DATABASE=sqlol
