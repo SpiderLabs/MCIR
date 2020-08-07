@@ -1,3 +1,6 @@
+:warning: *NOTE: This tool is no longer under active maintenance.*
+
+
 MCIR
 ====
 
